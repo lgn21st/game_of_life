@@ -28,4 +28,5 @@
 
 ### TODO
 
-* merge all one dimension into one context
+* deal with another dimension: [[0, 0]]
+* deal with two dimension
