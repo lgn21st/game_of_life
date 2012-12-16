@@ -27,18 +27,22 @@ describe Game do
                   [[0], [0]]
     end
 
-    it "3 cells" do
-      assert_grid [[0], [0], [0]],
-                  [[0], [0], [0]]
+    context "3 cells" do
+      it "all dead" do
+        assert_grid [[0], [0], [0]],
+                    [[0], [0], [0]]
 
-      assert_grid [[1], [0], [0]],
-                  [[0], [0], [0]]
+        assert_grid [[1], [0], [0]],
+                    [[0], [0], [0]]
 
-      assert_grid [[1], [1], [0]],
-                  [[0], [0], [0]]
+        assert_grid [[1], [1], [0]],
+                    [[0], [0], [0]]
+      end
 
-      assert_grid [[1], [1], [1]],
-                  [[0], [1], [0]]
+      it "keep alive" do
+        assert_grid [[1], [1], [1]],
+                    [[0], [1], [0]]
+      end
     end
 
     it ">= 4 cells" do
@@ -77,18 +81,42 @@ describe Game do
                   [[0, 0]]
     end
 
-    it "3 cells" do
-      assert_grid [[0, 0, 0]],
-                  [[0, 0, 0]]
+    context "3 cells" do
+      it "all dead" do
+        assert_grid [[0, 0, 0]],
+                    [[0, 0, 0]]
 
-      assert_grid [[1, 0, 0]],
-                  [[0, 0, 0]]
+        assert_grid [[1, 0, 0]],
+                    [[0, 0, 0]]
 
-      assert_grid [[1, 1, 0]],
-                  [[0, 0, 0]]
+        assert_grid [[1, 1, 0]],
+                    [[0, 0, 0]]
+      end
 
-      assert_grid [[1, 1, 1]],
-                  [[0, 1, 0]]
+      it "keep alive" do
+        assert_grid [[1, 1, 1]],
+                    [[0, 1, 0]]
+      end
+    end
+
+    it "4 cells" do
+      assert_grid [[0, 0, 0, 0]],
+                  [[0, 0, 0, 0]]
+
+      assert_grid [[1, 0, 0, 0]],
+                  [[0, 0, 0, 0]]
+
+      assert_grid [[1, 1, 0, 0]],
+                  [[0, 0, 0, 0]]
+
+      assert_grid [[1, 1, 1, 0]],
+                  [[0, 1, 0, 0]]
+
+      assert_grid [[0, 1, 1, 1]],
+                  [[0, 0, 1, 0]]
+
+      assert_grid [[1, 1, 1, 1]],
+                  [[0, 1, 1, 0]]
     end
   end
 

@@ -11,10 +11,10 @@
 
 ### 工作方式
 
-1. 结对编程
+1. 远程结对编程
 2. 测试先行
 3. 小步快走
-4. 每45分钟休息一次
+4. ~~每45分钟休息一次~~ 小步快走的发布视频
 
 ### 工具
 
@@ -25,8 +25,25 @@
 5. git / github
 6. whiteboard
 7. AntiRSI / Timer
+8. SketchBook Express
+
+### 原则
+1. Always drive code from requirement - 代码是从需求一步一步推演出来
+2. Limit red phase - 尽快让失败的测试用例通过，从而尽量缩短代码RED状态的时间
+3. Improve design only when code base is safe - 只有在代码安全的状态下，才去优化和改进设计
+
+### [Session 1] Feedback from RubyChina
+1. 对游戏规则不熟悉[fixed]
+2. 对极为细小的单元测试步伐不适应[fixed refs to 原则2]
+3. 为什么不用自动测试工具？[fixed]
+4. 尽量帮助初学者学习TDD的方法，原理[fixed]
+
+### [Session 1] Feedback from Daniel Teng's friends
+1. 有些测试用例的沟通性不强[fixed]
+2. 接口设计不够友好[fixed]
 
 ### TODO
 
 * deal with another dimension: [[0, 0]]
 * deal with two dimension
+* mrege alive_y? and alive_x?
