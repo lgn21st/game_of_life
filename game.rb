@@ -9,14 +9,14 @@ class Game
 
   def tick
     @y_length.times do |i|
-      if alive_y?(i) && has_2_alive_y_neighbors?(i)
-        set_alive_y(i)
-      end
-    end
+      @x_length.times do |j|
+        if alive?(i, j) && has_2_or_3_alive_neighbors?(i, j)
+          set_alive(i, j)
+        end
 
-    @x_length.times do |j|
-      if alive_x?(j) && has_2_alive_x_neighbors?(j)
-        set_alive_x(j)
+        if !alive?(i, j) && has_3_alive_neighbors?(i, j)
+          set_alive(i, j)
+        end
       end
     end
 
@@ -34,43 +34,69 @@ class Game
     @x_length = @grid[0].length
   end
 
-  def alive_y?(i)
-    @y_length > 1 && @grid[i][0] == 1
+  def alive?(i, j)
+    @grid[i][j] == 1
   end
 
-  def alive_x?(j)
-    @x_length > 1 && @grid[0][j] == 1
+  def set_alive(i, j)
+    @next_tick_grid[i][j] = 1
   end
 
-  def set_alive_y(i)
-    @next_tick_grid[i][0] = 1
+  def has_2_or_3_alive_neighbors?(i, j)
+    count = count_alive_neighbors(i, j)
+    count == 2 || count == 3
   end
 
-  def set_alive_x(j)
-    @next_tick_grid[0][j] = 1
+  def has_3_alive_neighbors?(i, j)
+    count_alive_neighbors(i, j) == 3
   end
 
-  def has_2_alive_y_neighbors?(i)
-    up_cell_alive?(i) && down_cell_alive?(i)
+  private
+
+  def count_alive_neighbors(i, j)
+    count = 0
+    count += 1 if up_cell_alive?(i, j)
+    count += 1 if down_cell_alive?(i, j)
+    count += 1 if left_cell_alive?(i, j)
+    count += 1 if right_cell_alive?(i, j)
+
+    count += 1 if left_down_cell_alive?(i, j)
+    count += 1 if right_up_cell_alive?(i, j)
+    count += 1 if right_down_cell_alive?(i, j)
+    count += 1 if left_up_cell_alive?(i, j)
+
+    count
   end
 
-  def has_2_alive_x_neighbors?(j)
-    left_cell_alive?(j) && right_cell_alive?(j)
+  def left_cell_alive?(i, j)
+    j > 0 && alive?(i, j-1)
   end
 
-  def left_cell_alive?(j)
-    j > 0 && @grid[0][j-1] == 1
+  def right_cell_alive?(i, j)
+    j < @x_length -1 && alive?(i, j+1)
   end
 
-  def right_cell_alive?(j)
-    j < @x_length -1 && @grid[0][j+1] == 1
+  def up_cell_alive?(i, j)
+    i > 0 && alive?(i-1, j)
   end
 
-  def up_cell_alive?(i)
-    i > 0 && @grid[i-1][0] == 1
+  def down_cell_alive?(i, j)
+    i < @y_length - 1 && alive?(i+1, j)
   end
 
-  def down_cell_alive?(i)
-    i < @y_length - 1 && @grid[i+1][0] == 1
+  def left_down_cell_alive?(i, j)
+    i < @y_length - 1 && j > 0 && alive?(i+1, j-1)
+  end
+
+  def right_up_cell_alive?(i, j)
+    i > 0 && j < @x_length -1 && alive?(i-1, j+1)
+  end
+
+  def right_down_cell_alive?(i, j)
+    i < @y_length - 1 && j < @x_length -1 && alive?(i+1, j+1)
+  end
+
+  def left_up_cell_alive?(i, j)
+    j > 0 && i > 0 && alive?(i-1, j-1)
   end
 end

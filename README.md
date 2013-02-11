@@ -44,6 +44,9 @@
 
 ### TODO
 
-* deal with another dimension: [[0, 0]]
-* deal with two dimension
-* mrege alive_y? and alive_x?
+* ~~deal with two dimension~~
+* switch i and j and @x_length and @y_length
+* ~~merge has_2_alive_y_neighbors and has_2_alive_x_neighbors to has_two_neighbors~~
+* ~~issue with assert_grid~~
+* ~~mrege similiar codes: alive_y? and alive_x?~~
+* ~~pull parameters for left_cell_alive? and up_cell_alive?~~
