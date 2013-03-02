@@ -1,6 +1,12 @@
 [Conway's Game of life](http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 ============
 
+### 视频教程
+
+ 1. [Two Daniel Pair Live Show session 1](http://railscasts-china.com/episodes/two-daniel-pair-live-show)
+ 2. [Two Daniel Pair Live Show session 2](http://railscasts-china.com/episodes/two-daniel-pair-live-show2)
+ 3. [Two Daniel Pair Live Show session 3](http://railscasts-china.com/episodes/two-daniel-pair-live-show3)
+
 ### 问题
 细胞自动机，由一堆格子构成的封闭空间，尺寸为N的空间就有 N×N 个格子。每一个格子旁边都由邻居格子存在。 每个格子的生死遵循下面的原则：
 
